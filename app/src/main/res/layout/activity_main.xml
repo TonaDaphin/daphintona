@@ -23,9 +23,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:fontFamily="@font/roboto"
-        android:text="MyRestaurants"
+        android:text="My Restaurants"
         android:textColor="@color/colorTextIcons"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textStyle="bold"
          />
 

@@ -1,0 +1,48 @@
+
+package com.example.daphintona.models;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class Category {
+
+    @Expose
+    private String alias;
+    @Expose
+    private String title;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Category() {
+    }
+
+    /**
+     * 
+     * @param title
+     * @param alias
+     */
+    public Category(String alias, String title) {
+        super();
+        this.alias = alias;
+        this.title = title;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+}
