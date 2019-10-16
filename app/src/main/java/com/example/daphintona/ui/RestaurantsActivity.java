@@ -1,6 +1,8 @@
 package com.example.daphintona.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.daphintona.MyRestaurantsArrayAdapter;
 import com.example.daphintona.R;
+import com.example.daphintona.adapters.RestaurantListAdapter;
 import com.example.daphintona.models.Business;
 import com.example.daphintona.models.Category;
 import com.example.daphintona.models.YelpBusinessesSearchResponse;
@@ -31,10 +34,12 @@ import retrofit2.Response;
 public class RestaurantsActivity extends AppCompatActivity {
     private static final String TAG = RestaurantsActivity.class.getSimpleName();
 
-    @BindView(R.id.locationTextView) TextView mLocationTextView;
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
+
+    private RestaurantListAdapter mAdapter;
+    public List<Business> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +47,8 @@ public class RestaurantsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String restaurant = ((TextView)view).getText().toString();
-                Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_LONG).show();
-            }
-        });
-
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Here are all the restaurants near: " + location);
 
         YelpApi client = YelpClient.getClient();
 
@@ -64,22 +60,13 @@ public class RestaurantsActivity extends AppCompatActivity {
                 hideProgressBar();
 
                 if (response.isSuccessful()) {
-                    List<Business> restaurantsList = response.body().getBusinesses();
-                    String[] restaurants = new String[restaurantsList.size()];
-                    String[] categories = new String[restaurantsList.size()];
-
-                    for (int i = 0; i < restaurants.length; i++){
-                        restaurants[i] = restaurantsList.get(i).getName();
-                    }
-
-                    for (int i = 0; i < categories.length; i++) {
-                        Category category = restaurantsList.get(i).getCategories().get(0);
-                        categories[i] = category.getTitle();
-                    }
-
-                    ArrayAdapter adapter
-                            = new MyRestaurantsArrayAdapter(RestaurantsActivity.this, android.R.layout.simple_list_item_1, restaurants, categories);
-                    mListView.setAdapter(adapter);
+                    restaurants = response.body().getBusinesses();
+                    mAdapter = new RestaurantListAdapter(RestaurantsActivity.this, restaurants);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager =
+                            new LinearLayoutManager(RestaurantsActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
                     showRestaurants();
                 } else {
@@ -107,8 +94,7 @@ public class RestaurantsActivity extends AppCompatActivity {
     }
 
     private void showRestaurants() {
-        mListView.setVisibility(View.VISIBLE);
-        mLocationTextView.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {

@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/food" />
+        android:src="@drawable/glass" />
 
     <TextView
         android:id="@+id/appNameTextView"
