@@ -1,39 +1,60 @@
 
 package com.example.daphintona.models;
 
+import android.widget.Toast;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Business {
 
+    @SerializedName("rating")
     @Expose
     private Double rating;
+    @SerializedName("price")
     @Expose
     private String price;
+    @SerializedName("phone")
     @Expose
     private String phone;
+    @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("alias")
     @Expose
     private String alias;
+    @SerializedName("is_closed")
     @Expose
     private Boolean isClosed;
+    @SerializedName("categories")
     @Expose
     private List<Category> categories = null;
+    @SerializedName("review_count")
     @Expose
     private Integer reviewCount;
+    @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("url")
     @Expose
     private String url;
+    @SerializedName("coordinates")
     @Expose
     private Coordinates coordinates;
+    @SerializedName("image_url")
     @Expose
-    private String imageUrl;
+    private String image_url;
+    @SerializedName("location")
     @Expose
     private Location location;
+    @SerializedName("distance")
     @Expose
     private Double distance;
+    @SerializedName("transactions")
     @Expose
     private List<String> transactions = null;
 
@@ -50,7 +71,7 @@ public class Business {
      * @param phone
      * @param location
      * @param alias
-     * @param imageUrl
+     * @param image_url
      * @param url
      * @param id
      * @param distance
@@ -62,7 +83,7 @@ public class Business {
      * @param isClosed
      * @param coordinates
      */
-    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
+    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String image_url, Location location, Double distance, List<String> transactions) {
         super();
         this.rating = rating;
         this.price = price;
@@ -75,7 +96,7 @@ public class Business {
         this.name = name;
         this.url = url;
         this.coordinates = coordinates;
-        this.imageUrl = imageUrl;
+        this.image_url = image_url;
         this.location = location;
         this.distance = distance;
         this.transactions = transactions;
@@ -121,12 +142,12 @@ public class Business {
         this.alias = alias;
     }
 
-    public Boolean getIsClosed() {
+    public Boolean getClosed() {
         return isClosed;
     }
 
-    public void setIsClosed(Boolean isClosed) {
-        this.isClosed = isClosed;
+    public void setClosed(Boolean closed) {
+        isClosed = closed;
     }
 
     public List<Category> getCategories() {
@@ -170,11 +191,11 @@ public class Business {
     }
 
     public String getImageUrl() {
-        return imageUrl;
+        return image_url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageUrl(String image_url) {
+        this.image_url = image_url;
     }
 
     public Location getLocation() {
@@ -200,5 +221,4 @@ public class Business {
     public void setTransactions(List<String> transactions) {
         this.transactions = transactions;
     }
-
 }

@@ -4,6 +4,10 @@ package com.example.daphintona.models;
 import com.example.daphintona.BuildConfig;
 import com.google.gson.annotations.Expose;
 
+import org.parceler.Parcel;
+
+@Parcel
+
 public class Region {
 
     @Expose
