@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.daphintona.Constants;
 import com.example.daphintona.MyRestaurantsArrayAdapter;
 import com.example.daphintona.R;
 import com.example.daphintona.adapters.RestaurantListAdapter;
@@ -32,6 +35,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+
     private static final String TAG = RestaurantsActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -61,7 +68,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     restaurants = response.body().getBusinesses();
-                    mAdapter = new RestaurantListAdapter(RestaurantsActivity.this, restaurants);
+                    mAdapter = new RestaurantListAdapter(RestaurantsActivity.this,restaurants);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
                             new LinearLayoutManager(RestaurantsActivity.this);
@@ -81,6 +88,7 @@ public class RestaurantsActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
     private void showFailureMessage() {
