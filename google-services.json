@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "783091852591",
+    "firebase_url": "https://myrestaurants-45a40.firebaseio.com",
+    "project_id": "myrestaurants-45a40",
+    "storage_bucket": "myrestaurants-45a40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783091852591:android:ce9dd64f1e152203a6adda",
+        "android_client_info": {
+          "package_name": "com.example.daphintona"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783091852591-7k89q6uo9s9hb5dealdtccteiarf1642.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsVHQmTD525cVlqbTBWLh76EoQHxQjouk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783091852591-7k89q6uo9s9hb5dealdtccteiarf1642.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

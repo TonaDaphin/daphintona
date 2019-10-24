@@ -1,6 +1,7 @@
 
 package com.example.daphintona.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 
@@ -26,7 +27,7 @@ public class YelpBusinessesSearchResponse {
      * @param total
      * @param businesses
      */
-    public YelpBusinessesSearchResponse(Integer total, List<Business> businesses, Region region) {
+    public YelpBusinessesSearchResponse(Integer total, ArrayList<Business> businesses, Region region) {
         super();
         this.total = total;
         this.businesses = businesses;

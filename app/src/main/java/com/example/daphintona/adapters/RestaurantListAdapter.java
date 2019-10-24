@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.daphintona.R;
 import com.example.daphintona.models.Business;
+import com.example.daphintona.models.Restaurant;
 import com.example.daphintona.ui.RestaurantDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,10 +27,10 @@ import butterknife.ButterKnife;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
 
-    private List<Business> mRestaurants;
+    private ArrayList<Restaurant> mRestaurants;
     private Context mContext;
 
-    public RestaurantListAdapter(Context context, List<Business> restaurants) {
+    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants) {
         mContext = context;
         mRestaurants = restaurants;
 
@@ -74,10 +76,10 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 mContext.startActivity(intent);
             }
 
-            public void bindRestaurant(Business restaurant) {
+            public void bindRestaurant(Restaurant restaurant) {
                 Picasso.get().load(restaurant.getImageUrl()).into(restaurantImageViewd);
                 mNameTextView.setText(restaurant.getName());
-                mCategoryTextView.setText(restaurant.getCategories().get(0).getTitle());
+                mCategoryTextView.setText(restaurant.getCategories().get(0));
                 mRatingTextView.setText("Rating: " + restaurant.getRating() + "/5");
             }
         }
