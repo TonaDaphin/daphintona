@@ -16,8 +16,8 @@ import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
-import retrofit2.Response;
 
 public class YelpService {
     public static void findRestaurants(String location, Callback callback){

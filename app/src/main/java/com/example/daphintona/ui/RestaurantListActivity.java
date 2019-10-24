@@ -1,5 +1,6 @@
 package com.example.daphintona.ui;
 
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,7 +23,6 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
 
 public class RestaurantListActivity extends AppCompatActivity {
     public static final String TAG = RestaurantListActivity.class.getSimpleName();
@@ -56,7 +56,7 @@ public class RestaurantListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call call, Response response) throws IOException {
                 restaurants = yelpService.processResults(response);
                 RestaurantListActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -69,8 +69,6 @@ public class RestaurantListActivity extends AppCompatActivity {
                     }
                 });
             }
-
-
         });
     }
 

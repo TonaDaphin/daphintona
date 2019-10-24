@@ -22,12 +22,10 @@ import com.example.daphintona.R;
 import com.example.daphintona.adapters.RestaurantListAdapter;
 import com.example.daphintona.models.Business;
 import com.example.daphintona.models.Category;
-import com.example.daphintona.models.Restaurant;
 import com.example.daphintona.models.YelpBusinessesSearchResponse;
 import com.example.daphintona.network.YelpApi;
 import com.example.daphintona.network.YelpClient;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,7 +46,7 @@ public class RestaurantsActivity extends AppCompatActivity {
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
     private RestaurantListAdapter mAdapter;
-    public ArrayList<Restaurant> restaurants;
+    public List<Business> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,11 +88,7 @@ public class RestaurantsActivity extends AppCompatActivity {
             }
 
         });
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if (mRecentAddress != null) {
-            getRestaurants(mRecentAddress);
-        }
+
     }
 
 
