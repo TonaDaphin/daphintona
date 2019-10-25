@@ -10,9 +10,9 @@ import org.parceler.Parcel;
 public class Category {
 
     @Expose
-    private String alias;
+    public String alias;
     @Expose
-    private String title;
+    public String title;
 
     /**
      * No args constructor for use in serialization

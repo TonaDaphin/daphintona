@@ -10,9 +10,9 @@ import org.parceler.Parcel;
 public class Center {
 
     @Expose
-    private Double latitude;
+    public Double latitude;
     @Expose
-    private Double longitude;
+    public Double longitude;
 
     /**
      * No args constructor for use in serialization

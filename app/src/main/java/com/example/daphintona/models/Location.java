@@ -11,19 +11,19 @@ import org.parceler.Parcel;
 public class Location {
 
     @Expose
-    private String city;
+    public String city;
     @Expose
-    private String country;
+    public String country;
     @Expose
-    private String address2;
+    public String address2;
     @Expose
-    private String address3;
+    public String address3;
     @Expose
-    private String state;
+    public String state;
     @Expose
-    private String address1;
+    public String address1;
     @Expose
-    private String zipCode;
+    public String zipCode;
 
     /**
      * No args constructor for use in serialization

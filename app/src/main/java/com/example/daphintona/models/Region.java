@@ -11,7 +11,7 @@ import org.parceler.Parcel;
 public class Region {
 
     @Expose
-    private Center center;
+    public Center center;
 
     /**
      * No args constructor for use in serialization

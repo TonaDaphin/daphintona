@@ -1,6 +1,7 @@
 package com.example.daphintona.ui;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,8 +31,8 @@ public class RestaurantListActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
 
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,16 @@ public class RestaurantListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if(mRecentAddress != null){
-            getRestaurants(mRecentAddress);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        if(mRecentAddress != null){
+//            getRestaurants(mRecentAddress);
+//        }
+
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("location");
+
+        getRestaurants(location);
     }
 
     private void getRestaurants(String location){
@@ -61,7 +67,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                 RestaurantListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new RestaurantListAdapter(getApplicationContext(), restaurants);
+                        mAdapter = new RestaurantListAdapter(getApplicationContext(),restaurants);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
